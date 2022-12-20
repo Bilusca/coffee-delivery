@@ -16,7 +16,7 @@ export const defaultTheme = {
   "base-500": "#8d8686",
   "base-400": "#d7d5d5",
   "base-300": "#e6e5e5",
-  "base-200": "#ededed",
+  "base-200": "#eeeded",
   "base-100": "#f3f2f2",
 
   "background": "#fafafa",

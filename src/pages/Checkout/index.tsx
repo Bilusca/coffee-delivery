@@ -1,5 +1,5 @@
 import { MapPinLine } from "phosphor-react";
-import { CheckoutCard, CheckoutCardInformation, CheckoutContainer } from "./styles";
+import { BasicInput, CheckoutCard, CheckoutCardInformation, CheckoutContainer, FormContainer } from "./styles";
 
 export function CheckoutPage() {
   return (
@@ -14,6 +14,19 @@ export function CheckoutPage() {
               <small>Informe o endereço onde deseja receber seu pedido</small>
             </div>
           </CheckoutCardInformation>
+          <FormContainer>
+            <BasicInput w="35%" placeholder="CEP" />
+            <BasicInput w="100%" placeholder="Rua" />
+            <div>
+              <BasicInput w="35%" placeholder="Número" />
+              <BasicInput w="65%" placeholder="Complemento" />
+            </div>
+            <div>
+              <BasicInput w="35%" placeholder="Bairro" />
+              <BasicInput w="48%" placeholder="Cidade" />
+              <BasicInput w="15%" placeholder="UF" />
+            </div>
+          </FormContainer>
         </CheckoutCard>
         <CheckoutCard>
           <p>aqui</p>
