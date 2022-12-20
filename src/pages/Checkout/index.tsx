@@ -1,5 +1,5 @@
-import { MapPinLine } from "phosphor-react";
-import { BasicInput, CheckoutCard, CheckoutCardInformation, CheckoutContainer, FormContainer } from "./styles";
+import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
+import { BasicInput, CheckoutCard, CheckoutCardInformation, CheckoutContainer, FormContainer, PaymentMethods } from "./styles";
 
 export function CheckoutPage() {
   return (
@@ -29,13 +29,42 @@ export function CheckoutPage() {
           </FormContainer>
         </CheckoutCard>
         <CheckoutCard>
-          <p>aqui</p>
+          <CheckoutCardInformation>
+            <CurrencyDollar size={22} color="#8047F8" />
+            <div>
+              <span>Pagamento</span>
+              <small>O pagamento é feito na entrega. Escolha a forma que deseja pagar</small>
+            </div>
+          </CheckoutCardInformation>
+          <PaymentMethods>
+            <div>
+              <input type="radio" name="paymentMethod" id="credit" />
+              <label htmlFor="credit">
+                <CreditCard size={22} color="#8047F8" />
+                Cartão de crédito
+              </label>
+            </div>
+            <div>
+              <input type="radio" name="paymentMethod" id="debit" />
+              <label htmlFor="debit">
+                <Bank size={22} color="#8047F8" />
+                Cartão de débito
+              </label>
+            </div>
+            <div>
+              <input type="radio" name="paymentMethod" id="money" />
+              <label htmlFor="money">
+                <Money size={22} color="#8047F8" />
+                Dinheiro
+              </label>
+            </div>
+          </PaymentMethods>
         </CheckoutCard>
       </div>
       <div>
         <h2>Cafés selecionados</h2>
         <CheckoutCard>
-          <p>aqui</p>
+
         </CheckoutCard>
       </div>
     </CheckoutContainer>

@@ -81,3 +81,36 @@ export const BasicInput = styled.input<BasicInputProps>`
     color: ${(props) => props.theme['base-500']};
   }
 `
+
+export const PaymentMethods = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.75rem;
+
+  input[type=radio] {
+    display: none;
+  }
+
+  input[type=radio]:checked + label {
+    border: ${(props) => `1px solid ${props.theme['purple-500']}`};
+    background-color: ${(props) => props.theme['purple-300']};
+    padding: 0.9375rem;
+  }
+
+  div label {
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: ${(props) => props.theme['text-2']};
+    line-height: 1.6;
+    background: ${(props) => props.theme['base-300']};
+    text-transform: uppercase;
+    border-radius: 6px;
+    cursor: pointer;
+
+    svg {
+      font-size: 1.375rem;
+    }
+  }
+`
