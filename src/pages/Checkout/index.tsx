@@ -1,5 +1,7 @@
 import { Bank, CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
-import { BasicInput, CheckoutCard, CheckoutCardInformation, CheckoutContainer, FormContainer, PaymentMethods } from "./styles";
+import { BasicInput, CartItem, CheckoutCard, CheckoutCardInformation, CheckoutContainer, FormContainer, PaymentMethods, QuantityForm } from "./styles";
+
+import ArabeCoffe from '../../assets/coffees/Arabe.png'
 
 export function CheckoutPage() {
   return (
@@ -63,8 +65,20 @@ export function CheckoutPage() {
       </div>
       <div>
         <h2>Cafés selecionados</h2>
-        <CheckoutCard>
-
+        <CheckoutCard confirmCard>
+          <CartItem>
+            <img src={ArabeCoffe} alt="" />
+            <div>
+              <span>Expresso Tradicional</span>
+              <div>
+                <QuantityForm>
+                  <button>+</button>
+                  <input type="number" name="quantity" />
+                  <button>-</button>
+                </QuantityForm>
+              </div>
+            </div>
+          </CartItem>
         </CheckoutCard>
       </div>
     </CheckoutContainer>

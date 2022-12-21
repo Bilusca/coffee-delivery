@@ -16,6 +16,7 @@ export const CheckoutContainer = styled.section`
 
 type CheckoutCardProps = {
   mb?: string | number;
+  confirmCard?: boolean
 };
 
 export const CheckoutCard = styled.div<CheckoutCardProps>`
@@ -25,6 +26,10 @@ export const CheckoutCard = styled.div<CheckoutCardProps>`
 
   ${(props) => props.mb && css`
     margin-bottom: ${props.mb}
+  `}
+
+  ${(props) => props.confirmCard && css`
+  border-radius: 6px 44px;
   `}
 `;
 
@@ -111,6 +116,58 @@ export const PaymentMethods = styled.div`
 
     svg {
       font-size: 1.375rem;
+    }
+  }
+`
+
+export const CartItem = styled.div`
+  display: flex;
+
+  img {
+    width: 4rem;
+    height: 4rem;
+    margin-right: 1.25rem;
+  }
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+`
+
+export const QuantityForm = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: ${(props) => props.theme['base-300']};
+  height: 2rem;
+  width: 4.5rem;
+  margin-right: 0.5rem;
+  border-radius: 6px;
+
+  input, button {
+    background: none;
+    border: none;
+  }
+
+  input {
+    width: 2rem;
+    text-align: center;
+  }
+
+  button {
+    width: 0.875rem;
+    height: 0.875rem;
+    font-size: 0.75rem;
+    color: ${(porps) => porps.theme['purple-500']};
+
+    &:first-of-type {
+      margin-left: 0.5rem;
+    }
+
+    &:last-of-type {
+      margin-right: 0.5rem;
     }
   }
 `
