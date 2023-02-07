@@ -1,10 +1,26 @@
-import { NavLink } from "react-router-dom";
-import styled from "styled-components";
+import { NavLink } from 'react-router-dom'
+import { down } from 'styled-breakpoints'
+import styled from 'styled-components'
 
 export const NavBarContainer = styled.div`
   margin: 0 auto;
   padding: 2rem 0;
   max-width: 70rem;
+
+  ${down('lg')} {
+    max-width: 100%;
+    padding: 2rem;
+  }
+
+  ${down('md')} {
+    max-width: 100%;
+    padding: 2rem;
+  }
+
+  ${down('sm')} {
+    max-width: 100%;
+    padding: 2rem;
+  }
 
   nav {
     display: flex;
@@ -61,7 +77,7 @@ export const NavLinkContainer = styled(NavLink)`
     align-items: center;
     justify-content: center;
     background-color: ${(props) => props.theme['yellow-700']};
-    color: ${(props) => props.theme['white']};
+    color: ${(props) => props.theme.white};
     font-weight: 700;
     font-size: ${(props) => props.theme['text-2']};
   }

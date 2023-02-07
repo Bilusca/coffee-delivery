@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const CardContainer = styled.div`
   padding: 1.25rem;
-  background-color: ${(props => props.theme['base-100'])};
+  background-color: ${(props) => props.theme['base-100']};
   border-radius: 6px 36px;
   display: flex;
   flex-direction: column;
@@ -41,7 +41,7 @@ export const CardContainer = styled.div`
       font-weight: 400;
 
       b {
-        font-family: ${(props) => props.theme['baloo']};
+        font-family: ${(props) => props.theme.baloo};
         font-size: 1.5rem;
         font-weight: 800;
         margin-left: 0.5rem;
@@ -51,22 +51,22 @@ export const CardContainer = styled.div`
 `
 
 export const ContainerTags = styled.div`
- display: flex;
- align-items: center;
- justify-content: center;
- gap: 0.25rem;
- margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 1.25rem;
 
- span {
-  display: inline-block;
-  background-color: ${(props) => props.theme['yellow-300']};
-  color: ${(props) => props.theme['yellow-700']};
-  padding: 0.25rem 0.5rem;
-  text-transform: uppercase;
-  border-radius: 20px;
-  font-size: 0.625rem;
-  font-weight: 700;
- }
+  span {
+    display: inline-block;
+    background-color: ${(props) => props.theme['yellow-300']};
+    color: ${(props) => props.theme['yellow-700']};
+    padding: 0.25rem 0.5rem;
+    text-transform: uppercase;
+    border-radius: 20px;
+    font-size: 0.625rem;
+    font-weight: 700;
+  }
 `
 
 export const QuantityForm = styled.div`
@@ -79,7 +79,8 @@ export const QuantityForm = styled.div`
   margin-right: 0.5rem;
   border-radius: 6px;
 
-  input, button {
+  input,
+  button {
     background: none;
     border: none;
   }
@@ -113,5 +114,5 @@ export const AddShoppingCartButton = styled.button`
   height: 2.375rem;
   border-radius: 0.375rem;
   border: none;
-  background-color: ${(props) => props.theme['purple-500']}
+  background-color: ${(props) => props.theme['purple-500']};
 `

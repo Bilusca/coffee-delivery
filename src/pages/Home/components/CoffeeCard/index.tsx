@@ -1,24 +1,58 @@
-import { ShoppingCartSimple } from "phosphor-react";
-import { AddShoppingCartButton, CardContainer, ContainerTags, QuantityForm } from "./styles";
-import americanoImg from 'assets/coffees/Americano.png'
+import { ShoppingCartSimple } from 'phosphor-react'
+import {
+  AddShoppingCartButton,
+  CardContainer,
+  ContainerTags,
+  QuantityForm,
+} from './styles'
+import { Coffee } from 'interfaces/coffee'
+import { priceFormater } from 'lib/priceFormater'
+import { useCartStore } from 'store/cart'
+import { useState } from 'react'
 
-export function CoffeeCard() {
+type CoffeeCardProps = {
+  coffee: Coffee
+}
+
+export function CoffeeCard({ coffee }: CoffeeCardProps) {
+  const formatedPrice = priceFormater(coffee.price)
+  const addItemToCart = useCartStore((state) => state.addItemToCart)
+  const [quantity, setQuantity] = useState<number>(1)
+
+  function addQuantity() {
+    setQuantity(quantity + 1)
+  }
+
+  function removeQuantity() {
+    if (quantity === 1) {
+      setQuantity(1)
+    } else {
+      setQuantity(quantity - 1)
+    }
+  }
+
   return (
     <CardContainer>
-      <img src={americanoImg} />
+      <img src={`${coffee.img}`} alt={`Imagem a bebida ${coffee.title}`} />
       <ContainerTags>
-        <span>Tradicional</span>
+        {coffee.tags.map((tag) => (
+          <span key={`${coffee.title}-${tag}`}>{tag}</span>
+        ))}
       </ContainerTags>
-      <h4>Expresso Tradicional</h4>
-      <p>O tradicional café feito com água quente e grãos moídos</p>
+      <h4>{coffee.title}</h4>
+      <p>{coffee.description}</p>
       <footer>
-        <span>R$ <b>9,90</b></span>
+        <span>
+          <b>{formatedPrice}</b>
+        </span>
         <QuantityForm>
-          <button>+</button>
-          <input type="number" name="quantity" />
-          <button>-</button>
+          <button onClick={addQuantity}>+</button>
+          <input type="number" name="quantity" value={quantity} readOnly />
+          <button onClick={removeQuantity}>-</button>
         </QuantityForm>
-        <AddShoppingCartButton>
+        <AddShoppingCartButton
+          onClick={() => addItemToCart({ ...coffee, quantity })}
+        >
           <ShoppingCartSimple size={18} weight="fill" color="#ffffff" />
         </AddShoppingCartButton>
       </footer>

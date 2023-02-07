@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: ${(props) => props.theme['background']};
+    background-color: ${(props) => props.theme.background};
     color: ${(props) => props.theme['base-600']};
     -webkit-font-smoothing: antialiased;
   }
@@ -33,5 +33,11 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Baloo 2', cursive;
     font-weight: 700;
     color: ${(props) => props.theme['base-800']};
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 `

@@ -1,6 +1,6 @@
-import { NavBar } from "components/NavBar";
-import { Outlet } from "react-router-dom";
-import { LayoutContainer } from "./styles";
+import { NavBar } from 'components/NavBar'
+import { Outlet } from 'react-router-dom'
+import { LayoutContainer } from './styles'
 
 export function DefaultLayout() {
   return (

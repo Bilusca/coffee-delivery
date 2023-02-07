@@ -1,37 +1,61 @@
-import styled, { css } from "styled-components";
+import { down } from 'styled-breakpoints'
+import styled, { css } from 'styled-components'
 
 export const CheckoutContainer = styled.section`
   max-width: 70rem;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 65% 1fr;
+  grid-template-columns: 60% 1fr;
   gap: 2rem;
-  
-  h1, h2 {
-    font-size: ${(props) => props.theme["text-5"]};
+
+  ${down('lg')} {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    padding: 0 2rem;
+  }
+
+  ${down('md')} {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    padding: 0 2rem;
+  }
+
+  ${down('sm')} {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    padding: 0 2rem;
+  }
+
+  h1,
+  h2 {
+    font-size: ${(props) => props.theme['text-5']};
     line-height: 1.3;
     margin-bottom: 0.9375rem;
   }
-`;
+`
 
 type CheckoutCardProps = {
-  mb?: string | number;
+  mb?: string | number
   confirmCard?: boolean
-};
+}
 
 export const CheckoutCard = styled.div<CheckoutCardProps>`
   background-color: ${(props) => props.theme['base-100']};
   border-radius: 6px;
   padding: 2.5rem;
 
-  ${(props) => props.mb && css`
-    margin-bottom: ${props.mb}
-  `}
+  ${(props) =>
+    props.mb &&
+    css`
+      margin-bottom: ${props.mb};
+    `}
 
-  ${(props) => props.confirmCard && css`
-  border-radius: 6px 44px;
-  `}
-`;
+  ${(props) =>
+    props.confirmCard &&
+    css`
+      border-radius: 6px 44px;
+    `}
+`
 
 export const CheckoutCardInformation = styled.div`
   display: flex;
@@ -70,7 +94,7 @@ export const FormContainer = styled.div`
 `
 
 type BasicInputProps = {
-  w: string | number;
+  w: string | number
 }
 
 export const BasicInput = styled.input<BasicInputProps>`
@@ -92,11 +116,11 @@ export const PaymentMethods = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   gap: 0.75rem;
 
-  input[type=radio] {
+  input[type='radio'] {
     display: none;
   }
 
-  input[type=radio]:checked + label {
+  input[type='radio']:checked + label {
     border: ${(props) => `1px solid ${props.theme['purple-500']}`};
     background-color: ${(props) => props.theme['purple-300']};
     padding: 0.9375rem;
@@ -122,6 +146,10 @@ export const PaymentMethods = styled.div`
 
 export const CartItem = styled.div`
   display: flex;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid;
+  border-color: ${(props) => props.theme['base-300']};
 
   img {
     width: 4rem;
@@ -131,8 +159,28 @@ export const CartItem = styled.div`
 
   & > div {
     display: flex;
+    flex: 1;
     flex-direction: column;
     gap: 0.5rem;
+  }
+`
+
+export const CartItemForm = styled.div`
+  display: flex;
+
+  button {
+    display: flex;
+    align-items: center;
+    font-size: 0.75rem;
+    padding: 0 0.5rem;
+    background-color: ${(props) => props.theme['base-300']};
+    border-radius: 6px;
+    border: none;
+
+    svg {
+      margin-right: 0.25rem;
+      color: ${(props) => props.theme['purple-700']};
+    }
   }
 `
 
@@ -145,8 +193,10 @@ export const QuantityForm = styled.div`
   width: 4.5rem;
   margin-right: 0.5rem;
   border-radius: 6px;
+  font-size: 1rem;
 
-  input, button {
+  input,
+  button {
     background: none;
     border: none;
   }
@@ -169,5 +219,48 @@ export const QuantityForm = styled.div`
     &:last-of-type {
       margin-right: 0.5rem;
     }
+  }
+`
+
+export const CartItemTitle = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  span,
+  b {
+    font-size: 1rem;
+  }
+`
+
+export const CheckoutInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    margin-bottom: 0.875rem;
+
+    &:last-of-type {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  button {
+    border-radius: 6px;
+    background: ${(props) => props.theme['yellow-500']};
+    border: none;
+    font-size: 0.875rem;
+    color: ${(props) => props.theme.white};
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0.75rem 0;
+    font-weight: 700;
   }
 `

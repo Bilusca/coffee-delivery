@@ -1,5 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 import heroBg from 'assets/hero-bg.png'
+import { down } from 'styled-breakpoints'
 
 export const HomeContainer = styled.div`
   width: 100%;
@@ -18,6 +19,24 @@ export const HeroInfo = styled.div`
   gap: 3.5rem;
   max-width: 70rem;
   margin: 0 auto;
+
+  ${down('lg')} {
+    max-width: 100%;
+    padding: 0 2rem;
+    flex-direction: column;
+  }
+
+  ${down('md')} {
+    max-width: 100%;
+    padding: 0 2rem;
+    flex-direction: column;
+  }
+
+  ${down('sm')} {
+    max-width: 100%;
+    padding: 0 2rem;
+    flex-direction: column;
+  }
 `
 
 export const HeroTitle = styled.h1`
@@ -31,11 +50,37 @@ export const HeroImageContainer = styled.div`
   display: block;
   width: 29.75rem;
   height: 22.5rem;
-  
+
+  ${down('lg')} {
+    width: 100%;
+    padding: 0 2rem;
+  }
+
+  ${down('md')} {
+    width: 100%;
+    padding: 0 2rem;
+  }
+
+  ${down('sm')} {
+    width: 100%;
+    padding: 0 2rem;
+  }
+
   img {
     display: block;
     width: auto;
     height: 100%;
+
+    ${down('lg')} {
+      width: 75%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    ${down('sm')} {
+      width: 100%;
+      height: auto;
+    }
   }
 `
 
@@ -50,13 +95,17 @@ export const BuyerInfos = styled.ul`
   grid-template-columns: auto auto;
   gap: 1.25rem 2.5rem;
   list-style: none;
+
+  ${down('sm')} {
+    grid-template-columns: auto;
+  }
 `
 
 const BULLET_COLORS = {
   yellow: 'yellow-700',
   lightYellow: 'yellow-500',
   base: 'base-600',
-  purple: 'purple-500'
+  purple: 'purple-500',
 } as const
 
 interface BuyerInfoProps {
@@ -78,13 +127,13 @@ export const BuyerInfo = styled.li<BuyerInfoProps>`
     justify-content: center;
 
     svg {
-      color: ${(props) => props.theme['white']}
+      color: ${(props) => props.theme.white};
     }
   }
 
   span {
     line-height: 130%;
-    color: ${(props) => props.theme['base-600']}
+    color: ${(props) => props.theme['base-600']};
   }
 `
 
@@ -98,10 +147,37 @@ export const CoffeesSection = styled.section`
     color: ${(props) => props.theme['base-700']};
     margin-bottom: 3.375rem;
   }
+
+  ${down('lg')} {
+    max-width: 100%;
+    padding: 0 2rem;
+  }
+
+  ${down('md')} {
+    max-width: 100%;
+    padding: 0 2rem;
+  }
+
+  ${down('sm')} {
+    max-width: 100%;
+    padding: 0 2rem;
+  }
 `
 
 export const CoffeesList = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2.5rem 2rem;
+
+  ${down('lg')} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  ${down('md')} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  ${down('sm')} {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `
