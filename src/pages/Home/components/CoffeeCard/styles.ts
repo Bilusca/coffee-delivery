@@ -91,10 +91,15 @@ export const QuantityForm = styled.div`
   }
 
   button {
-    width: 0.875rem;
-    height: 0.875rem;
-    font-size: 0.75rem;
+    width: 1rem;
+    height: 1rem;
+    font-size: 1rem;
     color: ${(porps) => porps.theme['purple-500']};
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+      color: ${(props) => props.theme['base-700']};
+    }
 
     &:first-of-type {
       margin-left: 0.5rem;
@@ -114,5 +119,10 @@ export const AddShoppingCartButton = styled.button`
   height: 2.375rem;
   border-radius: 0.375rem;
   border: none;
-  background-color: ${(props) => props.theme['purple-500']};
+  background-color: ${(props) => props.theme['purple-700']};
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    background-color: ${(props) => props.theme['purple-500']};
+  }
 `

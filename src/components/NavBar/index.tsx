@@ -43,15 +43,17 @@ export function NavBar() {
           <img src={Logo} alt="" />
         </Link>
         <InfoContainer>
-          <LocationContainer>
-            <MapPin size={22} weight="fill" />
-            <span>
-              {region.city}, {region.state}
-            </span>
-          </LocationContainer>
+          {region.city && region.state ? (
+            <LocationContainer>
+              <MapPin size={22} weight="fill" />
+              <span>
+                {region.city}, {region.state}
+              </span>
+            </LocationContainer>
+          ) : null}
           <NavLinkContainer to="/checkout">
             <ShoppingCartSimple weight="fill" size={22} />
-            {quantity > 0 && <span>{quantity}</span>}
+            {quantity > 0 ? <span>{quantity}</span> : null}
           </NavLinkContainer>
         </InfoContainer>
       </nav>

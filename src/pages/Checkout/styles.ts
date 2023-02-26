@@ -2,35 +2,37 @@ import { down } from 'styled-breakpoints'
 import styled, { css } from 'styled-components'
 
 export const CheckoutContainer = styled.section`
-  max-width: 70rem;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 60% 1fr;
-  gap: 2rem;
+  form {
+    max-width: 70rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 60% 1fr;
+    gap: 2rem;
 
-  ${down('lg')} {
-    grid-template-columns: 1fr;
-    max-width: 100%;
-    padding: 0 2rem;
-  }
+    ${down('lg')} {
+      grid-template-columns: 1fr;
+      max-width: 100%;
+      padding: 0 2rem;
+    }
 
-  ${down('md')} {
-    grid-template-columns: 1fr;
-    max-width: 100%;
-    padding: 0 2rem;
-  }
+    ${down('md')} {
+      grid-template-columns: 1fr;
+      max-width: 100%;
+      padding: 0 2rem;
+    }
 
-  ${down('sm')} {
-    grid-template-columns: 1fr;
-    max-width: 100%;
-    padding: 0 2rem;
-  }
+    ${down('sm')} {
+      grid-template-columns: 1fr;
+      max-width: 100%;
+      padding: 0 2rem;
+    }
 
-  h1,
-  h2 {
-    font-size: ${(props) => props.theme['text-5']};
-    line-height: 1.3;
-    margin-bottom: 0.9375rem;
+    h1,
+    h2 {
+      font-size: ${(props) => props.theme['text-5']};
+      line-height: 1.3;
+      margin-bottom: 0.9375rem;
+    }
   }
 `
 
@@ -137,6 +139,11 @@ export const PaymentMethods = styled.div`
     text-transform: uppercase;
     border-radius: 6px;
     cursor: pointer;
+    transition: background 0.1s ease-in-out;
+
+    &:hover {
+      background: ${(props) => props.theme['base-400']};
+    }
 
     svg {
       font-size: 1.375rem;
@@ -176,6 +183,11 @@ export const CartItemForm = styled.div`
     background-color: ${(props) => props.theme['base-300']};
     border-radius: 6px;
     border: none;
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+      background-color: ${(props) => props.theme['base-400']};
+    }
 
     svg {
       margin-right: 0.25rem;
@@ -211,6 +223,12 @@ export const QuantityForm = styled.div`
     height: 0.875rem;
     font-size: 0.75rem;
     color: ${(porps) => porps.theme['purple-500']};
+    background-color: transparent;
+
+    &:hover {
+      background-color: transparent;
+      color: ${(props) => props.theme['purple-700']};
+    }
 
     &:first-of-type {
       margin-left: 0.5rem;
@@ -262,5 +280,10 @@ export const CheckoutInfo = styled.div`
     text-align: center;
     padding: 0.75rem 0;
     font-weight: 700;
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+      background-color: ${(props) => props.theme['yellow-700']};
+    }
   }
 `

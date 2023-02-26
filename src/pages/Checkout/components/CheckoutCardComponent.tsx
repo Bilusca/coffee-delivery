@@ -43,7 +43,7 @@ export function CheckoutCardComponent() {
           <span>Total </span>
           <span>{cartResumeToDisplay.totalWithDeliver}</span>
         </div>
-        <button>Confirmar pedido</button>
+        <button type="submit">Confirmar pedido</button>
       </CheckoutInfo>
     </CheckoutCard>
   )

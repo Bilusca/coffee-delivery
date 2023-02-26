@@ -139,7 +139,7 @@ export const BuyerInfo = styled.li<BuyerInfoProps>`
 
 export const CoffeesSection = styled.section`
   max-width: 70rem;
-  margin: 2rem auto 0;
+  margin: 2rem auto;
 
   h2 {
     font-size: ${(props) => props.theme['text-8']};
