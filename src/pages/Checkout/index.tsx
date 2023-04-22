@@ -20,9 +20,35 @@ import {
 
 import { CheckoutCardComponent } from './components/CheckoutCardComponent'
 import { checkoutSchema, CheckoutSchemaType } from 'lib/checkoutSchema'
+import { useNavigate } from 'react-router-dom'
+import { useCartStore } from 'store/cart'
+import { useEffect } from 'react'
+import { useCoffeeStore } from 'store/coffee'
+import { shallow } from 'zustand/shallow'
+import { maskCEP } from 'lib/masks'
 
 export function CheckoutPage() {
-  const { register, handleSubmit } = useForm<CheckoutSchemaType>({
+  const { quantity, setConfirmedBill } = useCartStore(
+    ({ cartResume, setConfirmedBill }) => ({
+      quantity: cartResume.quantity,
+      setConfirmedBill,
+    }),
+    shallow,
+  )
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (quantity < 1) {
+      navigate('/')
+    }
+  }, [quantity, navigate])
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors, isDirty, isValid },
+  } = useForm<CheckoutSchemaType>({
     resolver: zodResolver(checkoutSchema),
     defaultValues: {
       cep: '',
@@ -32,12 +58,15 @@ export function CheckoutPage() {
       neighborhood: '',
       number: '',
       street: '',
-      payment: '',
+      payment: 'credit',
     },
   })
 
+  watch()
+
   function submitCoffeeDelivery(data: CheckoutSchemaType) {
-    console.log(data)
+    setConfirmedBill(data)
+    navigate('/confirmed')
   }
 
   return (
@@ -54,18 +83,33 @@ export function CheckoutPage() {
               </div>
             </CheckoutCardInformation>
             <FormContainer>
-              <BasicInput w="35%" placeholder="CEP" {...register('cep')} />
-              <BasicInput w="100%" placeholder="Rua" {...register('street')} />
+              <BasicInput
+                w="35%"
+                placeholder="CEP"
+                {...register('cep')}
+                hasError={!!errors.cep}
+                onChange={(event) => {
+                  event.target.value = maskCEP(event.target.value)
+                }}
+              />
+              <BasicInput
+                w="100%"
+                placeholder="Rua"
+                {...register('street')}
+                hasError={!!errors.street}
+              />
               <div>
                 <BasicInput
                   w="35%"
                   placeholder="Número"
                   {...register('number')}
+                  hasError={!!errors.number}
                 />
                 <BasicInput
                   w="65%"
                   placeholder="Complemento"
                   {...register('complement')}
+                  hasError={!!errors.complement}
                 />
               </div>
               <div>
@@ -73,13 +117,20 @@ export function CheckoutPage() {
                   w="35%"
                   placeholder="Bairro"
                   {...register('neighborhood')}
+                  hasError={!!errors.neighborhood}
                 />
                 <BasicInput
                   w="48%"
                   placeholder="Cidade"
                   {...register('city')}
+                  hasError={!!errors.city}
                 />
-                <BasicInput w="15%" placeholder="UF" {...register('estate')} />
+                <BasicInput
+                  w="15%"
+                  placeholder="UF"
+                  {...register('estate')}
+                  hasError={!!errors.estate}
+                />
               </div>
             </FormContainer>
           </CheckoutCard>
@@ -136,7 +187,7 @@ export function CheckoutPage() {
         </div>
         <div>
           <h2>Cafés selecionados</h2>
-          <CheckoutCardComponent />
+          <CheckoutCardComponent isDirty={isDirty} isValid={isValid} />
         </div>
       </form>
     </CheckoutContainer>

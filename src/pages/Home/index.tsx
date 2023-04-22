@@ -10,10 +10,10 @@ import {
   HeroSection,
   HeroInfo,
   BuyerInfos,
-  BuyerInfo,
   CoffeesSection,
   CoffeesList,
 } from './styles'
+import { BulletWithIcon } from 'layouts/DefaultLayout/styles'
 
 export function HomePage() {
   const coffees = useCoffeeStore((state) => state.coffees)
@@ -31,30 +31,30 @@ export function HomePage() {
               qualquer hora
             </HeroText>
             <BuyerInfos>
-              <BuyerInfo color="yellow">
+              <BulletWithIcon color="yellow">
                 <div>
                   <ShoppingCartSimple weight="fill" size={16} />
                 </div>
                 <span>Compra simples e segura</span>
-              </BuyerInfo>
-              <BuyerInfo color="base">
+              </BulletWithIcon>
+              <BulletWithIcon color="base">
                 <div>
                   <Package weight="fill" size={16} />
                 </div>
                 <span>Embalagem mantém o café intacto</span>
-              </BuyerInfo>
-              <BuyerInfo color="lightYellow">
+              </BulletWithIcon>
+              <BulletWithIcon color="lightYellow">
                 <div>
                   <Timer weight="fill" size={16} />
                 </div>
                 <span>Entrega rápida e rastreada</span>
-              </BuyerInfo>
-              <BuyerInfo color="purple">
+              </BulletWithIcon>
+              <BulletWithIcon color="purple">
                 <div>
                   <Coffee weight="fill" size={16} />
                 </div>
                 <span>O café chega fresquinho até você</span>
-              </BuyerInfo>
+              </BulletWithIcon>
             </BuyerInfos>
           </div>
           <HeroImageContainer>

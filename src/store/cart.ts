@@ -1,4 +1,5 @@
 import { Coffee } from 'interfaces/coffee'
+import { CheckoutSchemaType } from 'lib/checkoutSchema'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
@@ -11,11 +12,14 @@ type CartStoreType = {
     totalPrice: number
     deliverPrice: number
   }
+  confirmedBill: CheckoutSchemaType
   addItemToCart: (item: Cart) => void
   removeItemFromCart: (id: number) => void
+  cleanupCart: () => void
   changeResume: () => void
   addItemQuantity: (id: number) => void
   decreaseItemQuantity: (id: number) => void
+  setConfirmedBill: (data: CheckoutSchemaType) => void
 }
 
 export const useCartStore = create(
@@ -27,6 +31,7 @@ export const useCartStore = create(
         totalPrice: 0,
         deliverPrice: 3.5,
       },
+      confirmedBill: {} as CheckoutSchemaType,
       addItemToCart: (item: Cart) => {
         const cart = get().cart
 
@@ -60,6 +65,10 @@ export const useCartStore = create(
 
         set({ cart: cartWithRemovedItem })
 
+        get().changeResume()
+      },
+      cleanupCart: () => {
+        set({ cart: [] })
         get().changeResume()
       },
       changeResume: () => {
@@ -111,6 +120,9 @@ export const useCartStore = create(
 
         set({ cart: cartWithAddQuantity })
         get().changeResume()
+      },
+      setConfirmedBill: (data: CheckoutSchemaType) => {
+        set({ confirmedBill: { ...data } })
       },
     }),
     { name: 'cart-storage', storage: createJSONStorage(() => localStorage) },

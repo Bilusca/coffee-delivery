@@ -4,7 +4,13 @@ import { CheckoutCard, CheckoutInfo } from '../styles'
 import { CheckoutCartItem } from './CheckoutCartItem'
 import { priceFormater } from 'lib/priceFormater'
 
-export function CheckoutCardComponent() {
+export function CheckoutCardComponent({
+  isDirty,
+  isValid,
+}: {
+  isDirty: boolean
+  isValid: boolean
+}) {
   const { cart, cartResume } = useCartStore(
     (state) => ({ cart: state.cart, cartResume: state.cartResume }),
     shallow,
@@ -43,7 +49,9 @@ export function CheckoutCardComponent() {
           <span>Total </span>
           <span>{cartResumeToDisplay.totalWithDeliver}</span>
         </div>
-        <button type="submit">Confirmar pedido</button>
+        <button type="submit" disabled={!isDirty || !isValid}>
+          Confirmar pedido
+        </button>
       </CheckoutInfo>
     </CheckoutCard>
   )

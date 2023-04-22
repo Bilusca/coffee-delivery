@@ -101,42 +101,6 @@ export const BuyerInfos = styled.ul`
   }
 `
 
-const BULLET_COLORS = {
-  yellow: 'yellow-700',
-  lightYellow: 'yellow-500',
-  base: 'base-600',
-  purple: 'purple-500',
-} as const
-
-interface BuyerInfoProps {
-  color: keyof typeof BULLET_COLORS
-}
-
-export const BuyerInfo = styled.li<BuyerInfoProps>`
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-
-  div {
-    background-color: ${(props) => props.theme[BULLET_COLORS[props.color]]};
-    width: 2rem;
-    height: 2rem;
-    border-radius: 9999px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    svg {
-      color: ${(props) => props.theme.white};
-    }
-  }
-
-  span {
-    line-height: 130%;
-    color: ${(props) => props.theme['base-600']};
-  }
-`
-
 export const CoffeesSection = styled.section`
   max-width: 70rem;
   margin: 2rem auto;

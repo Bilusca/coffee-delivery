@@ -46,6 +46,18 @@ export const CheckoutCard = styled.div<CheckoutCardProps>`
   border-radius: 6px;
   padding: 2.5rem;
 
+  ${down('lg')} {
+    margin-bottom: 1.25rem;
+  }
+
+  ${down('md')} {
+    margin-bottom: 1.25rem;
+  }
+
+  ${down('sm')} {
+    margin-bottom: 1.25rem;
+  }
+
   ${(props) =>
     props.mb &&
     css`
@@ -92,11 +104,24 @@ export const FormContainer = styled.div`
   div {
     display: flex;
     gap: 0.75rem;
+
+    ${down('lg')} {
+      flex-direction: column;
+    }
+
+    ${down('md')} {
+      flex-direction: column;
+    }
+
+    ${down('sm')} {
+      flex-direction: column;
+    }
   }
 `
 
 type BasicInputProps = {
   w: string | number
+  hasError?: boolean
 }
 
 export const BasicInput = styled.input<BasicInputProps>`
@@ -108,8 +133,26 @@ export const BasicInput = styled.input<BasicInputProps>`
   font-size: ${(props) => props.theme['text-3']};
   line-height: 1.3;
 
+  ${(props) =>
+    props.hasError &&
+    css`
+      border-color: #ef4444;
+    `}
+
   &::placeholder {
     color: ${(props) => props.theme['base-500']};
+  }
+
+  ${down('lg')} {
+    width: 100%;
+  }
+
+  ${down('md')} {
+    width: 100%;
+  }
+
+  ${down('sm')} {
+    width: 100%;
   }
 `
 
@@ -117,6 +160,18 @@ export const PaymentMethods = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 0.75rem;
+
+  ${down('lg')} {
+    grid-template-columns: 1fr;
+  }
+
+  ${down('md')} {
+    grid-template-columns: 1fr;
+  }
+
+  ${down('sm')} {
+    grid-template-columns: 1fr;
+  }
 
   input[type='radio'] {
     display: none;
@@ -284,6 +339,11 @@ export const CheckoutInfo = styled.div`
 
     &:hover {
       background-color: ${(props) => props.theme['yellow-700']};
+    }
+
+    &:disabled {
+      background-color: ${(props) => props.theme['base-400']};
+      cursor: not-allowed;
     }
   }
 `

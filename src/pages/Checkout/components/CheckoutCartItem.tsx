@@ -36,9 +36,13 @@ export function CheckoutCartItem({
         </CartItemTitle>
         <CartItemForm>
           <QuantityForm>
-            <button onClick={() => addItemQuantity(id)}>+</button>
+            <button role="button" onClick={() => addItemQuantity(id)}>
+              +
+            </button>
             <input type="number" name="quantity" value={quantity} readOnly />
-            <button onClick={() => decreaseItemQuantity(id)}>-</button>
+            <button role="button" onClick={() => decreaseItemQuantity(id)}>
+              -
+            </button>
           </QuantityForm>
           <button onClick={() => removeItemFromCart(id)}>
             <Trash /> Remover
